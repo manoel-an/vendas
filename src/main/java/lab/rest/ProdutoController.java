@@ -5,22 +5,25 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import repository.Produtos;
+import service.CadastroProdutoService;
 
 @RestController
 @RequestMapping("/produto")
 public class ProdutoController {
 
-	List<Produto> produtos = new ArrayList<>();
+	@Autowired
+	private CadastroProdutoService cadastroProdutoService;
 
-	public ProdutoController() {
-		produtos.add(new Produto(1, "Arroz"));
-		produtos.add(new Produto(2, "Feijão"));
-		produtos.add(new Produto(3, "Carne"));
-		produtos.add(new Produto(4, "Tomate"));
-	}
+	@Autowired
+	private Produtos produto;
+
+	List<Produto> produtos = new ArrayList<>();
 
 	@RequestMapping("/consultar")
 	public Produto consultar() {
@@ -29,12 +32,12 @@ public class ProdutoController {
 
 	@RequestMapping("/listar")
 	public List<Produto> listar() {
-		return produtos;
+		return produto.findAll();
 	}
 
-	@RequestMapping(value = "/novo", method = POST)
-	public Produto novo(@RequestBody Produto produto) {
-		produtos.add(produto);
+	@RequestMapping(value = "/salvar", method = POST)
+	public Produto salvar(@RequestBody Produto produto) {
+		this.cadastroProdutoService.salvar(produto);
 		return produto;
 	}
 

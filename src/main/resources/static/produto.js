@@ -10,7 +10,7 @@ angular.module("vendas").controller("novoProdutoCtrl", function($scope, $http) {
 	};
 
 	$scope.novoProduto = function(produto) {
-		$http.post("produto/novo", produto).success(function(data) {
+		$http.post("produto/salvar", produto).success(function(data) {
 			console.log(data);
 		this.listarProduto();
 		});

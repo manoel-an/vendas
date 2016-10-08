@@ -1,8 +1,18 @@
 package lab.rest;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Produto {
-	Integer codigo;
-	String nome;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer codigo;
+
+	private String nome;
 
 	public Integer getCodigo() {
 		return codigo;
@@ -18,9 +28,6 @@ public class Produto {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public Produto() {
 	}
 
 	public Produto(Integer codigo, String nome) {
