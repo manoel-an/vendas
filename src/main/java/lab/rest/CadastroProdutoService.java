@@ -1,10 +1,7 @@
-package service;
+package lab.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import lab.rest.Produto;
-import repository.Produtos;
 
 @Service
 public class CadastroProdutoService {

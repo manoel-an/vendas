@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import repository.Produtos;
-import service.CadastroProdutoService;
-
 @RestController
 @RequestMapping("/produto")
 public class ProdutoController {
